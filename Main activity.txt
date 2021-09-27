@@ -1,0 +1,41 @@
+package com.example.a6;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+ public class MainActivity extends AppCompatActivity {
+
+    private final String TAG = "Lifecycle";
+    private Button secondscreen;
+    private EditText send_email;
+    private EditText send_text;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        secondscreen = (Button)findViewById(R.id.fourth);
+        send_email = (EditText)findViewById(R.id.email);
+        send_text = (EditText)findViewById(R.id.passowrd);
+
+        secondscreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {   String str = send_email.getText().toString();
+                String str2 = send_text.getText().toString();
+                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                intent.putExtra("message_key", str);
+                intent.putExtra("message_key", str2);
+                startActivity(intent);
+            }
+        });
+    }
+ }
+
